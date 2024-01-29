@@ -2,6 +2,9 @@
 
 This is a Chrome extension called "ChatGPT Folder Organizer Colors" that helps you organize your ChatGPT chats by adding colors to them. This README will guide you through the installation process for this extension.
 
+<!-- Image screenshot.png -->
+![Screenshot](screenshot.png)
+
 ## Installation
 
 To install the "ChatGPT Folder Organizer Colors" Chrome extension, follow these steps:
