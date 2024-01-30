@@ -3,6 +3,8 @@ const MENU_PARENT_SELECTOR = "main";
 const EXT_MENU_SELECTOR = 'div[ext-menu]';
 const CHATS_LIST_SELECTOR = "nav div.flex-col div.flex-col";
 const CHAT_LINK_SELECTOR = "nav ol li a[href^='/c/']";
+// const FIRST_LINK_SELECTOR = "nav ol li a[href^='/c/']:first-child";
+
 const colorClasses = {
     1: 'bg-red-500',
     2: 'bg-green-500',
@@ -15,6 +17,7 @@ let chats = [];
 let menu = null;
 
 
+
 // Initialization function for the extension
 function initExtension() {
     initChatLocalStorage();
@@ -22,6 +25,7 @@ function initExtension() {
     watchForChatChanges();
     handleInitialSelectedChat();
 }
+
 
 // Local Storage Management
 function initChatLocalStorage() {
@@ -101,7 +105,8 @@ function getCurrentColorForChat(chatId) {
 }
 
 function setColorToChat(chatId, color) {
-    let chatElement = document.querySelector(`nav ol li a[href='/c/${chatId}']`);
+
+    let chatElement = document.querySelector(`nav ol li a[href*='${chatId}']`);
     if (!chatElement) {
         updateLocalStorage({"id": chatId, "color": color});
         return;
@@ -187,12 +192,17 @@ function handleInitialSelectedChat() {
         console.log("FoundChat", foundChat);
         if (foundChat) {
             updateSelectedColorInMenu(foundChat.color);
+        }else{
+            updateSelectedColorInMenu('none');
         }
     }
 }
 
 function getSelectedChatId() {
-    return window.location.href.split('/')[4];
+    let url = window.location.href.split('/')
+    // get the chat id from the url next to /c/
+    let chatId = url[url.indexOf('c') + 1];
+    return chatId;
 }
 
 // Initialize the extension
