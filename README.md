@@ -1,5 +1,7 @@
 # ChatGPT Folder Organizer Colors Chrome Extension
 
+> This Extention is deprecated (OpenAI Changed its UI structure)
+
 This is a Chrome extension called "ChatGPT Folder Organizer Colors" that helps you organize your ChatGPT chats by adding colors to them. This README will guide you through the installation process for this extension.
 
 <!-- Image screenshot.png -->
